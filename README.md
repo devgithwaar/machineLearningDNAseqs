@@ -1,5 +1,5 @@
-# mldna
-#  machine learning for dna sequences' mutations/SPNs/SNVs
+# 
+#  Machine learning predicting the pathogenic risks for DNA sequences' mutations/SPNs/SNVs (in R language)
+#  Author: Hui-Heng Lin, Ph.D.
 
-# in R lanauge
-# standard code flow
+see reference research article on MedRvix: Lin HH, et al., xxxxxx
