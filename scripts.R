@@ -2,76 +2,14 @@
 # Author: Hui-Heng Lin, PhD. Copyright reserved. 
 
 
+setwd("D:/RworkDir/") # Change working directory/path to your desired one, since the default working folder of R is "C:/windows/system32". Alternatively, if you use Rstudio, it could be set in the graphical user interface. 
 
-""" On 6th may 2020 @ rstudio of winserver 2016 at yuebei hopistal's 3-13f-1341 office room; created since 6th may 2020, continuous updates, modifications presented
 
-Previously stupidly forgotten to save all data and variables in R, now i have to reconstruct the svm model from zero beginning!
-
-above reconstruction is Fine, but this time, has to make it a clean and standard code!!!!======hehe still failed, but make it on 11th may 2020@ notepad ++ win8.1 on HP omen 17
-
-## remember to set.seed(x) stupid for reproducibility!
-
-Author: Hui-heng Lin , phd. postdoc   
+# remember to set.seed(x) for reproducibility!
 
 
 
-R version 3.6.3 (2020-02-29) -- "Holding the Windsock"
-Copyright (C) 2020 The R Foundation for Statistical Computing
-Platform: x86_64-w64-mingw32/x64 (64-bit)
-
-R是自由软件，不带任何担保。在某些条件下你可以将其自由散布。用'license()'或'licence()'来看散布的详细条件。
-
-R是个合作计划，有许多人为之做出了贡献. 用'contributors()'来看合作者的详细情况. 用'citation()'会告诉你如何在出版物中正确地引用R或R程序包。
-
-用'demo()'来看一些示范程序，用'help()'来阅读在线帮助文件，或 用'help.start()'通过HTML浏览器来看帮助文件。 用'q()'退出R.
-
-
-> citation()
-
-To cite R in publications use:   R Core Team (2020). R: A language and  environment for statistical computing. R   Foundation for Statistical Computing, Vienna,   Austria. URL https://www.R-project.org/. ========odel R-project's base was in Vienna?
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {R: A Language and Environment for Statistical Computing},
-    author = {{R Core Team}},
-    organization = {R Foundation for Statistical Computing},
-    address = {Vienna, Austria},
-    year = {2020},
-    url = {https://www.R-project.org/},
-  }
-
-We have invested a lot of time and effort in
-creating R, please cite it when using it for
-data analysis. See also ‘citation("pkgname")’
-for citing R packages.
-
-"""
-
-"""
-this is a standard code full flow of (re-) construction of SVM, should paste index/category at the beginning of this scrip file? E.g.:
-
-                      Index
-1.0 xxxxx  line xx-xx
-1.1 xxxxx  line xx-xx?
-1.1.1 xxxx
-1.1.2.... xxxx
-1.2 xxxxx
-1.3.....  xxxx
-
-
-"""
-
-
-# stupid R make the default working folder as c:/windows/system32!!  so stupid!!  Set in Rstudio Option or use command to change workin folder to 
-
-
-setwd("D:/RworkDir/") # done. meaning set working directory
-
-
-
-library(e1071) # load the svm lib in R
-citation(e1071) # error odel!
+library(e1071) # load the support vector machine library in R
 citation("e1071") # outputed below. Correct one, require "  " on "pack_name"
 
 """
@@ -804,3 +742,40 @@ SVM模型有两个非常重要的参数C与gamma。
     (C,gamma)相互独立，便于并行化进行
 
 """
+
+
+"""
+
+R version 3.6.3 (2020-02-29) -- "Holding the Windsock"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R是自由软件，不带任何担保。在某些条件下你可以将其自由散布。用'license()'或'licence()'来看散布的详细条件。
+
+R是个合作计划，有许多人为之做出了贡献. 用'contributors()'来看合作者的详细情况. 用'citation()'会告诉你如何在出版物中正确地引用R或R程序包。
+
+用'demo()'来看一些示范程序，用'help()'来阅读在线帮助文件，或 用'help.start()'通过HTML浏览器来看帮助文件。 用'q()'退出R.
+
+
+> citation()
+
+To cite R in publications use:   R Core Team (2020). R: A language and  environment for statistical computing. R   Foundation for Statistical Computing, Vienna,   Austria. URL https://www.R-project.org/. ========odel R-project's base was in Vienna?
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {R: A Language and Environment for Statistical Computing},
+    author = {{R Core Team}},
+    organization = {R Foundation for Statistical Computing},
+    address = {Vienna, Austria},
+    year = {2020},
+    url = {https://www.R-project.org/},
+  }
+
+We have invested a lot of time and effort in
+creating R, please cite it when using it for
+data analysis. See also ‘citation("pkgname")’
+for citing R packages.
+
+"""
+
