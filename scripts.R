@@ -7,9 +7,9 @@ setwd("D:/your_desired_path/") # Change working directory/path to your desired o
 
 library(e1071) # load the support vector machine library in R
 citation("e1071")
+
 """
 > citation("e1071") 
-
 在出版物中使用程序包时引用‘e1071’:
   David Meyer, Evgenia Dimitriadou, Kurt Hornik,   Andreas Weingessel and Friedrich Leisch  (2019). e1071: Misc Functions of the
   Department of Statistics, Probability Theory   Group (Formerly: E1071), TU Wien. R package   version 1.7-3.   https://CRAN.R-project.org/package=e1071   =============hehe, lin-cih jen的libsvm要不要引用？这个interface lin 没参加开发的呵呵。
@@ -22,42 +22,36 @@ Theory Group (Formerly: E1071), TU Wien},
     author = {David Meyer and Evgenia Dimitriadou and Kurt Hornik and Andreas Weingessel and Friedrich Leisch},
     year = {2019},
     note = {R package version 1.7-3},
-    url = {https://CRAN.R-project.org/package=e1071},
-  }              """
+    url = {https://CRAN.R-project.org/package=e1071},}
+"""
 
+# BRCA1 gene mutants' preparation
+# Download raw/standard BRCA1 full length gene(DNA sequences) from genome browser (Ensembl, NCBI, etc) displaying the human reference genome GCh38.
+# Save the BRCA1 full length gene DNA sequences to local computer .txt file and loaded it into R computing environment.
 
+library(Biostrings) # need to use the DNAString() for format conversion
 
+dna<-scan( file="I:/your_path_/fulllengthBRCA1_DNA_sequence.txt", what = character(0) ) # 
+# load the full sequence into R environment via basic function scan( ) . Note that the raw format of DNA sequence might contain  multiple "\n" new line marks. It is necessary to remove them and make the full length sequence into one-line format.
+
+head(dna) ; class(dna) # checking the DNA sequence imported. The variable was in character data type
 
 # step 1 : data preparation: sequences, vectors, labels, splitting sets: 6:2:2 as trainingset : cross-valiation set : testing set
 
 # 1.1 get the raw/standard BRCA1 gene sequence from genome, load it from local disk file into a variable==============shit!! should make the seqeuence continuously in one-line!! multiple lines will include "\n" affecting the position calling! shit!
 
-
-library(Biostrings) # need to use the DNAString() for format conversion
-
-
-# try scan(). scan() was self-attached , no need to call lib nor install!
-dna<-scan( file="I:/1 prjsRes/MLpredSnpVarMutants/myOwnData2020ensemblClinVarDbSPNs/fulllengthBRCA1DNAseq125969bpFromEnsemblGenomViewer.txt", what = character(0) ) 
-head(dna)
-class(dna) # character
-dna[1] # outputed annoation:">GCh38...xxx" ==========fuck this shit, tried the shit lib 'seqinr' and 'biostring' 's shit import function, forced to import as fasta format, so I manually added " > xxxx annotation xxx" into it. In fact now, got the scan(), no need to add the shit "< xxxx annotation"
-
-dna[2] # outputed long seq!
+dna[1] # access the header annoation of the sequence:">GCh38 human reference genome..."
+dna[2] # acces the full length BRCA1 gene sequence. Alternatively, dna[2][1] can access the same content as well.
 dna[3] # NA
-dna[2][1] # shit still long seq!
-dna[2][2] # shit NA! noway to get single base output []!
 
 
+# Convert the sequence to "biostrings" data type
+DNAString(dna[2]) # check
+d3<-DNAString(dna[2]) # assign the converted format to variable
+class(d3) # data type checking. Has become the "biostrings" type. Conversion succeeded.
+d3[2]; d3[1];d3[2]; d3[4]  # through indication of seqeuence position number, we could access any single base of the full length sequence. Prepare for the mutation operation (base substitution). 
 
-DNAString(dna[2]) # heyyo!!! got it!!
-d3<-DNAString(dna[2]) ; class(d3) # odel "biostrings" type!
-d3[2] # so cool!!!! single base letter presented eventually!
-d3[1];d3[2];d3[4] # heyyo! outputed T C T
-
-substr(d3,1,1) # T!
-substr(d3,1,1) # also T! won't extract and remove!
-substr(d3,2,2) # cool ! C
-substr(d3,1,2) # cool ! TC!
+substr(d3,1,2) #  way to access multiple neighbor bases
 
 # 1.2 copy another var for operating, do not operate the original BRCA1 seqeuence variable!
 
@@ -71,11 +65,6 @@ substr(seq_ts,5,5) <-"T" # error del! 无法在非字符的对象里替换子字
 # more direct way?
 seq_ts[5]<-"T";
 seq_ts[5] # fine be back to T now!
-
-
-""" 1.2.5----- save/backup in the middle: all var into .Rdata. Backup is vital! ------"""
-# can either do it via clicking graphical interface on Rstudio or use command:
-save.image(file = "D:/RworkDir/reconstructSVM6may2020.RData", version = 1.0 , safe = TRUE) #  use reverse / , not the linux one :/, and the recommended suffix was ".RData", uppercase "D", not the ".Rdata". Matters?====================use load(xxx) if wanna load var/data from .RData file!
 
 
 
@@ -776,4 +765,10 @@ for citing R packages.
 
 """
 # Set.seed(x) for reproducibility!
+
+
+""" 1.2.5----- save/backup in the middle: all var into .Rdata. Backup is vital! ------"""
+# can either do it via clicking graphical interface on Rstudio or use command:
+save.image(file = "D:/RworkDir/reconstructSVM6may2020.RData", version = 1.0 , safe = TRUE) #  use reverse / , not the linux one :/, and the recommended suffix was ".RData", uppercase "D", not the ".Rdata". Matters?====================use load(xxx) if wanna load var/data from .RData file!
+
 
