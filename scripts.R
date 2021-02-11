@@ -2,21 +2,15 @@
 # Author: Hui-Heng Lin, PhD. Copyright reserved. 
 
 
-setwd("D:/RworkDir/") # Change working directory/path to your desired one, since the default working folder of R is "C:/windows/system32". Alternatively, if you use Rstudio, it could be set in the graphical user interface. 
-
-
-# remember to set.seed(x) for reproducibility!
-
+setwd("D:/your_desired_path/") # Change working directory/path to your desired one, since the default working folder of R is "C:/windows/system32". Alternatively, if you use Rstudio, it could be set in the graphical user interface. 
 
 
 library(e1071) # load the support vector machine library in R
-citation("e1071") # outputed below. Correct one, require "  " on "pack_name"
-
+citation("e1071")
 """
 > citation("e1071") 
 
 在出版物中使用程序包时引用‘e1071’:
-
   David Meyer, Evgenia Dimitriadou, Kurt Hornik,   Andreas Weingessel and Friedrich Leisch  (2019). e1071: Misc Functions of the
   Department of Statistics, Probability Theory   Group (Formerly: E1071), TU Wien. R package   version 1.7-3.   https://CRAN.R-project.org/package=e1071   =============hehe, lin-cih jen的libsvm要不要引用？这个interface lin 没参加开发的呵呵。
 
@@ -30,6 +24,9 @@ Theory Group (Formerly: E1071), TU Wien},
     note = {R package version 1.7-3},
     url = {https://CRAN.R-project.org/package=e1071},
   }              """
+
+
+
 
 # step 1 : data preparation: sequences, vectors, labels, splitting sets: 6:2:2 as trainingset : cross-valiation set : testing set
 
@@ -778,4 +775,5 @@ data analysis. See also ‘citation("pkgname")’
 for citing R packages.
 
 """
+# Set.seed(x) for reproducibility!
 
